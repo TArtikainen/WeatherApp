@@ -12,6 +12,7 @@ var app = new Vue({
 		feelslike:'',
 		city:'',
 	},
+	
 	// Geographic coordinates
 	created() {
 		navigator.geolocation.getCurrentPosition(pos => {
