@@ -46,6 +46,7 @@ var app = new Vue({
 					alert('Incorrect city name!')
 				});
 		},
+		
 		// Search by geographic coordinates
 		loadWeather() {
 			axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&units=metric&appid=ddd04e5b4ff1b5ec144e29e84e52aef2`)
@@ -60,8 +61,7 @@ var app = new Vue({
 				this.feelslike = weather.main.feels_like;
 				this.humidity = weather.main.humidity + '%';
                 this.desc = weather.weather[0].description;
-				this.loading = false;
-				
+				this.loading = false;	
 			})
 			.catch(error => {
 				alert('Location information did not load correctly')
@@ -69,5 +69,4 @@ var app = new Vue({
 				
         }
 	}
-
 });
