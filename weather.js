@@ -28,17 +28,16 @@ var app = new Vue({
 		search() {
 			console.log(this.city);
 			axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=ddd04e5b4ff1b5ec144e29e84e52aef2`)
-				.then(res => {
-					let weather = res.data;
-					console.log('response',weather);
+				.then(response => {
+					console.log('response',response.data);
 
-					this.location = weather.name;
-					this.country = weather.sys.country;
-					this.temp = Math.floor(weather.main.temp);
-					this.wind = weather.wind.speed;
-					this.feelslike = weather.main.feels_like;
-					this.humidity = weather.main.humidity + '%';
-					this.desc = weather.weather[0].description;
+					this.location = response.data.name;
+					this.country = response.data.sys.country;
+					this.temp = Math.floor(response.data.main.temp);
+					this.wind = response.data.wind.speed;
+					this.feelslike = response.data.main.feels_like;
+					this.humidity = response.data.main.humidity + '%';
+					this.desc = response.data.weather[0].description;
 					this.loading = false;
 					
 				})
@@ -50,17 +49,16 @@ var app = new Vue({
 		// Search by geographic coordinates
 		loadWeather() {
 			axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&units=metric&appid=ddd04e5b4ff1b5ec144e29e84e52aef2`)
-			.then(res => {
-				let weather = res.data;
-				console.log('response',weather);
+			.then(response => {
+				console.log('response',response.data);
 				
-				this.location = weather.name;
-				this.country = weather.sys.country;
-				this.temp = Math.floor(weather.main.temp);
-				this.wind = weather.wind.speed;
-				this.feelslike = weather.main.feels_like;
-				this.humidity = weather.main.humidity + '%';
-                this.desc = weather.weather[0].description;
+				this.location = response.data.name;
+				this.country = response.data.sys.country;
+				this.temp = Math.floor(response.data.main.temp);
+				this.wind = response.data.wind.speed;
+				this.feelslike = response.data.main.feels_like;
+				this.humidity = response.data.main.humidity + '%';
+                this.desc = response.data.weather[0].description;
 				this.loading = false;	
 			})
 			.catch(error => {
