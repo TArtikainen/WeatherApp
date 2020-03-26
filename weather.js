@@ -58,7 +58,7 @@ var app = new Vue({
 				this.wind = response.data.wind.speed;
 				this.feelslike = response.data.main.feels_like;
 				this.humidity = response.data.main.humidity + '%';
-                this.desc = response.data.weather[0].description;
+                	this.desc = response.data.weather[0].description;
 				this.loading = false;	
 			})
 			.catch(error => {
