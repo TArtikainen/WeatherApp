@@ -11,6 +11,7 @@ var app = new Vue({
 		humidity:'',
 		feelslike:'',
 		city:'',
+		icon:'',
 	},
 	
 	// Geographic coordinates
@@ -37,6 +38,7 @@ var app = new Vue({
 					this.wind = response.data.wind.speed;
 					this.feelslike = response.data.main.feels_like;
 					this.humidity = response.data.main.humidity;
+					this.icon = response.data.weather[0].icon;
 					this.desc = response.data.weather[0].description;
 					this.loading = false;
 					
@@ -58,12 +60,14 @@ var app = new Vue({
 				this.wind = response.data.wind.speed;
 				this.feelslike = response.data.main.feels_like;
 				this.humidity = response.data.main.humidity;
+				this.icon = response.data.weather[0].icon;
                 this.desc = response.data.weather[0].description;
 				this.loading = false;	
 			})
 			.catch(error => {
 				alert('Location information did not load correctly')
 			});
+		
 				
         }
 	}
